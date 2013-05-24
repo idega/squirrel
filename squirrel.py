@@ -1,8 +1,8 @@
 # This was originally written to proxy and cache images
-# from JCR repository. Cache directory can be cleaned
-# when required. Image cache will be restored on first
-# request. This also can generate image thumbnails when
-# required. Just use width parameter in the request for
+# from JCR repository. Theoretically cache directory could
+# be cleaned when required. Image cache should be restored
+# on first request. This also generates image thumbnails when
+# asked. Just use width parameter in the request for
 # image: '.../product/example.png?w=100'.
 
 
