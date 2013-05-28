@@ -21,18 +21,19 @@
 
 2. Edit `/etc/httpd/conf.d/virtualhosts.conf` and add virtual host configuration for squirrel:
 
-		<VirtualHost media.xperious.com:80>
-			ServerName media.xperious.com
+		<VirtualHost media.test.xperious.com:80>
+			ServerName media.test.xperious.com
 			DocumentRoot /var/squirrel/xperious
 			ErrorLog /var/log/httpd/xperiousmedia_error_log
 			CustomLog /var/log/httpd/xperiousmedia_log combined
-			WSGIDaemonProcess media.xperious.com processes=1 threads=200 display-name=%{GROUP}
-			WSGIProcessGroup media.xperious.com
+			WSGIDaemonProcess media.test.xperious.com processes=1 threads=200 display-name=%{GROUP}
+			WSGIProcessGroup media.test.xperious.com
 			WSGIScriptAliasMatch ^/content/(.*) /var/squirrel/xperious/squirrel.py
 			SetEnv REMOTE_USER user
 			SetEnv REMOTE_PASS pass
-			SetEnv REMOTE_ROOT http://xperious.com
-			Header add Cache-Control "max-age=86400"
+			SetEnv REMOTE_ROOT http://core.test.xperious.com
+			ExpiresActive On
+    		ExpiresDefault "access plus 1 day"
 			<Directory /var/squirrel/xperious>
 	    	Order allow,deny
 				Allow from all
@@ -42,7 +43,7 @@
 ### /etc/hosts
 1. Make sure your system is aware of virtual host. Edit `/etc/hosts`:
 
-		10.1.1.186      media.xperious.com
+		10.1.1.186      media.test.xperious.com
 
 
 ## MAC OS X
